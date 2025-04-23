@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スライドショー</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    .slideshow-container {
+      position: relative;
+      max-width: 800px;
+      width: 100%;
+      overflow: hidden;
+    }
+    .slides {
+      display: none;
+      width: 100%;
+    }
+    .active {
+      display: block;
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -22px;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+  </style>
+</head>
+<body>
+  <div class="slideshow-container">
+    <img src="pic/pic01.jpg" class="slides active" alt="Slide 1">
+    <img src="pic/pic02.jpg" class="slides" alt="Slide 2">
+    <img src="pic/pic03.jpg" class="slides" alt="Slide 3">
+    <img src="pic/pic04.jpg" class="slides" alt="Slide 4">
+    <img src="pic/pic05.jpg" class="slides" alt="Slide 5">
+    <img src="pic/pic06.jpg" class="slides" alt="Slide 6">
+    <img src="pic/pic07.jpg" class="slides" alt="Slide 7">
+    <img src="pic/pic08.jpg" class="slides" alt="Slide 8">
+    <img src="pic/pic09.jpg" class="slides" alt="Slide 9">
+    <img src="pic/pic10.JPG" class="slides" alt="Slide 11">
+    <img src="pic/pic11.JPG" class="slides" alt="Slide 12">
+    <img src="pic/pic12.JPG" class="slides" alt="Slide 13">
+    <img src="pic/pic13.JPG" class="slides" alt="Slide 14">
+    <img src="pic/pic14.JPG" class="slides" alt="Slide 15">
+    <img src="pic/pic15.JPG" class="slides" alt="Slide 16">
+    <img src="pic/pic16.JPG" class="slides" alt="Slide 17">
+    <img src="pic/pic17.JPG" class="slides" alt="Slide 18">
+    <img src="pic/pic18.JPG" class="slides" alt="Slide 19">
+    <!-- 必要に応じて画像を追加してください -->
+
+    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+    <a class="next" onclick="changeSlide(1)">&#10095;</a>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slides');
+
+    function showSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (index + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+
+    function changeSlide(direction) {
+      showSlide(currentSlide + direction);
+    }
+
+    // 自動スライドショー
+    setInterval(() => {
+      changeSlide(1);
+    }, 3000); // 3秒ごとにスライド
+  </script>
+</body>
+</html></html>
