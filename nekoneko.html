@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ねこねこゲーム</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f8ff;
+      }
+      #game-area {
+        margin: 20px auto;
+        width: 300px;
+        height: 300px;
+        border: 2px solid #333;
+        position: relative;
+        background-color: #fff;
+      }
+      .cat {
+        width: 50px;
+        height: 50px;
+        background-color: orange;
+        border-radius: 50%;
+        position: absolute;
+      }
+      #score {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ねこねこゲーム</h1>
+    <div id="game-area"></div>
+    <div id="score">スコア: 0</div>
+    <script>
+      const gameArea = document.getElementById('game-area');
+      const scoreDisplay = document.getElementById('score');
+      let score = 0;
+
+      function createCat() {
+        const cat = document.createElement('div');
+        cat.classList.add('cat');
+        const x = Math.random() * (gameArea.clientWidth - 50);
+        const y = Math.random() * (gameArea.clientHeight - 50);
+        cat.style.left = `${x}px`;
+        cat.style.top = `${y}px`;
+
+        cat.addEventListener('click', () => {
+          score++;
+          scoreDisplay.textContent = `スコア: ${score}`;
+          cat.remove();
+          createCat();
+        });
+
+        gameArea.appendChild(cat);
+      }
+
+      createCat();
+    </script>
+  </body>
+</html>
